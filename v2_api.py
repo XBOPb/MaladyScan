@@ -46,8 +46,18 @@ def link_check_result(scan_id):
         result = response.json()
         print(json.dumps(result, sort_keys=False, indent=4))
 
+def scan_ip_address():
+    report_url = 'https://virustotal.com/vtapi/v2/ip-address/report'
+    params = dict(apikey=api_key, domain='google.com')
+    response = requests.get(report_url, params=params)
+    if response.status_code == 200:
+        result = response.json()
+        print(json.dumps(result, sort_keys=False, indent=4))
+    
+
 if __name__ == '__main__':
-    scan = check_link('https://google.com')
-    link_check_result(scan)
-    scan_id = check_file()
-    file_check_result(scan_id)
+    # scan_ip_address()
+    # scan = check_link('https://google.com')
+    # link_check_result(scan)
+    # scan_id = check_file()
+    # file_check_result(scan_id)
