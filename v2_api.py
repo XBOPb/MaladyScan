@@ -1,16 +1,14 @@
 import json
 import requests
 
-file_path = r''
-api_key = ''
-params = dict(apikey=api_key)
 
-def check_file(file_path):
+def check_file(api_key, file_path):
     scan_url = 'https://virustotal.com/vtapi/v2/file/scan'
+    params = dict(apikey=api_key)
+
     with open(file_path, 'rb') as file:
         files = dict(file=(file_path, file))
         response = requests.post(scan_url, files=files, params=params)
-        print(response)
     if response.status_code == 200:
         result = response.json()
         json_result = json.dumps(result, sort_keys=False, indent=4)
@@ -20,16 +18,18 @@ def check_file(file_path):
     else: 
         return response.status_code
     
-def file_check_result(scan_id):
+def file_check_result(api_key, scan_id):
     report_url = 'https://virustotal.com/vtapi/v2/file/report'
     params = dict(apikey=api_key, resource=scan_id)
     response = requests.get(report_url, params=params)
-    if response.status_code == 200:
-        result = response.json()
-        print(json.dumps(result, sort_keys=False, indent=4))
+    if not response.status_code == 200:
+        return 'Unable to complete file scan.'
+    result = response.json()
+    result = json.dumps(result, sort_keys=False, indent=4)
+    return result
 
 
-def check_link(link):
+def check_link(api_key, link):
     scan_url = 'https://virustotal.com/vtapi/v2/url/scan'
     params = dict(apikey=api_key, url=link)
     response = requests.post(scan_url, data=params)
@@ -41,7 +41,7 @@ def check_link(link):
         return scan_id
 
 
-def link_check_result(scan_id):
+def link_check_result(api_key, scan_id):
     report_url = 'https://virustotal.com/vtapi/v2/file/report'
     params = dict(apikey=api_key, resource=scan_id)
     response = requests.get(report_url, params=params)
