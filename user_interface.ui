@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <layout class="QVBoxLayout" name="general_lay" stretch="0,0,3,7">
+     <layout class="QVBoxLayout" name="general_lay" stretch="0,3,7">
       <item>
        <layout class="QHBoxLayout" name="title_api_lay">
         <item>
@@ -39,27 +39,6 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="title_target_lay">
-        <item>
-         <widget class="QLabel" name="scan_target_label">
-          <property name="text">
-           <string>Scan Target:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="scan_target_field">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>30</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
        <layout class="QHBoxLayout" name="main_lay">
         <item>
          <layout class="QVBoxLayout" name="file_lay">
@@ -67,6 +46,26 @@
            <widget class="QPushButton" name="scan_file_button">
             <property name="text">
              <string>Scan File</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="file_path_label">
+            <property name="text">
+             <string>File path:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="file_path_field">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -81,6 +80,26 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QLabel" name="url_address_label">
+            <property name="text">
+             <string>URL address:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="url_address_field">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
         <item>
@@ -89,6 +108,26 @@
            <widget class="QPushButton" name="scan_ip_button">
             <property name="text">
              <string>Scan IP</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="ip_address_label">
+            <property name="text">
+             <string>IP address:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="ip_address_field">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -107,7 +146,7 @@
            <x>0</x>
            <y>0</y>
            <width>774</width>
-           <height>342</height>
+           <height>369</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
