@@ -13,6 +13,7 @@ class Scanner(QMainWindow):
 
         self.ui.scan_file_button.clicked.connect(self.start_file_scan)
         self.ui.scan_url_button.clicked.connect(self.start_url_scan)
+        self.ui.scan_ip_button.clicked.connect(self.start_ip_scan)
 
     def read_api_key(self):
         self.api_key = self.ui.api_key_field.toPlainText()
@@ -51,6 +52,17 @@ class Scanner(QMainWindow):
             self.ui.scan_result_area.setText('Please check if your URL is valid.')
         scan_result = v2_api.link_check_result(self.api_key, response)
         self.scan_result_output(scan_result)
+
+    def start_ip_scan(self):
+        self.read_api_key()
+        self.ip_address = self.ui.ip_address_field.toPlainText()
+        if not self.ip_address:
+            self.ui.scan_result_area.setText('IP address field is empty! Provide a URL to check.')
+            return
+        response = v2_api.scan_ip_address(self.api_key, self.ip_address)
+        if not response:
+            self.ui.scan_result_area.setText('Please check if provided IP is valid.')
+        print(response)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

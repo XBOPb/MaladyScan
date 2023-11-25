@@ -49,12 +49,12 @@ def link_check_result(api_key, scan_id):
         result = response.json()
         return json.dumps(result, sort_keys=False, indent=4)
 
-def scan_ip_address():
+def scan_ip_address(api_key, ip_address):
     report_url = 'https://virustotal.com/vtapi/v2/ip-address/report'
-    params = dict(apikey=api_key, domain='google.com')
+    params = dict(apikey=api_key, domain=ip_address)
     response = requests.get(report_url, params=params)
     if response.status_code == 200:
         result = response.json()
-        print(json.dumps(result, sort_keys=False, indent=4))
+        return json.dumps(result, sort_keys=False, indent=4)
         
 
